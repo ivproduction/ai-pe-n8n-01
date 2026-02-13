@@ -1,0 +1,7 @@
+python-telegram-bot
+openai
+pydantic-settings
+loguru
+httpx
+python-dotenv
+

@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  # Бот пока спит (раскомментируем, когда пропишем ключи в .env)
+  # bot:
+  #   build: .
+  #   env_file: .env
+  #   restart: always
+
+  # --- ГЛАВНЫЙ ГЕРОЙ УРОКА: n8n ---
+  n8n:
+      image: docker.n8n.io/n8nio/n8n
+      container_name: n8n-homework
+      restart: unless-stopped
+      ports:
+        - "5678:5678"
+      environment:
+        - GENERIC_TIMEZONE=Europe/Moscow
+        - TZ=Europe/Moscow
+        - WEBHOOK_URL=https://a14c-45-128-38-241.ngrok-free.app
+        - N8N_PYTHON_ENABLED=false
+        - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      volumes:
+        - n8n_data:/home/node/.n8n # Сохраняем все твои сценарии на диске
+
+# Создаем хранилище для данных
+volumes:
+  n8n_data:
+

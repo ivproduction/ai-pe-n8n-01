@@ -4,8 +4,7 @@ FROM docker.n8n.io/n8nio/n8n:latest
 ENV GENERIC_TIMEZONE=Europe/Moscow \
     TZ=Europe/Moscow \
     N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true \
-    N8N_TUNNEL_ENABLED=true \
-    WEBHOOK_URL="https://ai-pe-n8n-01-production.up.railway.app"
+    N8N_TUNNEL_ENABLED=true
 
 # Официальный образ уже слушает на 5678 и EXPOSE 5678.
 # Railway сам определит порт из Dockerfile/образа и повесит HTTP-домен.

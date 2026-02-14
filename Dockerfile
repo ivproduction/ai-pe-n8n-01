@@ -7,9 +7,11 @@ COPY docker-entrypoint-n8n.sh /docker-entrypoint-n8n.sh
 RUN chmod +x /docker-entrypoint-n8n.sh
 
 # Базовые настройки окружения. Значения можно переопределить через Railway UI.
+# N8N_USER_FOLDER — явно задаём путь данных (workflow, БД, конфиг). Монтировать volume сюда: /home/node/.n8n.
 # N8N_PROXY_HOPS=1 — обязательно за прокси (Railway): убирает ошибку X-Forwarded-For / trust proxy.
 ENV GENERIC_TIMEZONE=Europe/Moscow \
     TZ=Europe/Moscow \
+    N8N_USER_FOLDER=/home/node/.n8n \
     N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true \
     N8N_TUNNEL_ENABLED=true \
     N8N_PROXY_HOPS=1 \
